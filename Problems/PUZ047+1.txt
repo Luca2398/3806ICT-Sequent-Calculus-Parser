@@ -1,0 +1,87 @@
+------------------------------------------------------------------------
+
+
+    TPTP Problem File: PUZ047+1.p
+
+View Solutions <https://tptp.org/cgi-bin/SeeTPTP?
+Category=Solutions&Domain=PUZ&File=PUZ047+1> - Solve Problem <https://
+tptp.org/cgi-bin/SystemOnTPTP?TPTPProblem=PUZ047%2B1>
+
+------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------
+% File     : PUZ047+1 : TPTP v9.2.1. Released v2.5.0.
+% Domain   : Syntactic
+% Problem  : Taking the wolf, goat, and cabbage across river
+% Version  : Especial.
+% English  :
+
+% Refs     : [And97] Andrews (1994), Email to G. Sutcliffe
+% Source   : [And97]
+% Names    : THM100 [And97]
+
+% Status   : Theorem
+% Rating   : 0.00 v9.1.0, 0.13 v9.0.0, 0.00 v8.2.0, 0.07 v8.1.0, 0.14 v7.5.0, 0.05 v7.4.0, 0.00 v6.4.0, 0.07 v6.3.0, 0.00 v6.1.0, 0.04 v6.0.0, 0.25 v5.5.0, 0.08 v5.4.0, 0.09 v5.3.0, 0.22 v5.2.0, 0.07 v5.0.0, 0.05 v4.1.0, 0.11 v4.0.0, 0.05 v3.7.0, 0.00 v2.5.0
+% Syntax   : Number of formulae    :    1 (   0 unt;   0 def)
+%            Number of atoms       :   30 (   0 equ)
+%            Maximal formula atoms :   30 (  30 avg)
+%            Number of connectives :   29 (   0   ~;   0   |;  14   &)
+%                                         (   0 <=>;  15  =>;   0  <=;   0 <~>)
+%            Maximal formula depth :   18 (  18 avg)
+%            Maximal term depth    :    2 (   1 avg)
+%            Number of predicates  :    1 (   1 usr;   0 prp; 5-5 aty)
+%            Number of functors    :    7 (   7 usr;   3 con; 0-1 aty)
+%            Number of variables   :   19 (  18   !;   1   ?)
+% SPC      : FOF_THM_RFO_NEQ
+
+% Comments :
+%--------------------------------------------------------------------------
+fof(thm100,conjecture,
+    ( ( p(south,south,south,south,start)
+      & ! [T] :
+          ( p(south,north,south,north,T)
+         => p(north,north,south,north,go_alone(T)) )
+      & ! [T1] :
+          ( p(north,north,south,north,T1)
+         => p(south,north,south,north,go_alone(T1)) )
+      & ! [T2] :
+          ( p(south,south,north,south,T2)
+         => p(north,south,north,south,go_alone(T2)) )
+      & ! [T3] :
+          ( p(north,south,north,south,T3)
+         => p(south,south,north,south,go_alone(T3)) )
+      & ! [T4] :
+          ( p(south,south,south,north,T4)
+         => p(north,north,south,north,take_wolf(T4)) )
+      & ! [T5] :
+          ( p(north,north,south,north,T5)
+         => p(south,south,south,north,take_wolf(T5)) )
+      & ! [T6] :
+          ( p(south,south,north,south,T6)
+         => p(north,north,north,south,take_wolf(T6)) )
+      & ! [T7] :
+          ( p(north,north,north,south,T7)
+         => p(south,south,north,south,take_wolf(T7)) )
+      & ! [X,Y,U] :
+          ( p(south,X,south,Y,U)
+         => p(north,X,north,Y,take_goat(U)) )
+      & ! [X1,Y1,V] :
+          ( p(north,X1,north,Y1,V)
+         => p(south,X1,south,Y1,take_goat(V)) )
+      & ! [T8] :
+          ( p(south,north,south,south,T8)
+         => p(north,north,south,north,take_cabbage(T8)) )
+      & ! [T9] :
+          ( p(north,north,south,north,T9)
+         => p(south,north,south,south,take_cabbage(T9)) )
+      & ! [U1] :
+          ( p(south,south,north,south,U1)
+         => p(north,south,north,north,take_cabbage(U1)) )
+      & ! [V1] :
+          ( p(north,south,north,north,V1)
+         => p(south,south,north,south,take_cabbage(V1)) ) )
+   => ? [Z] : p(north,north,north,north,Z) ) ).
+
+%--------------------------------------------------------------------------
+
+------------------------------------------------------------------------
